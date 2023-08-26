@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Play&family=Radley&display=swap');
+:root {
+    --green: rgb(35, 255, 76);
+    background-color: black;
+}
+
+body {
+    margin: 0px;
+}
+.left-side > img {
+    height: 90px;
+}
+
+#root, .hero-section, .home, .text-book-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-bar {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px 0px 30px;
+    border-bottom: 2px solid var(--green);
+    position: fixed;
+    z-index: 10;
+}
+
+button {
+    padding: 8px 8px 8px 8px;
+    background: linear-gradient(to right, var(--green), var(--green) );
+    color: var(--green);
+    border: 4px solid rgb(35, 255, 76);
+    font-size: 20px;
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    font-weight: bold;
+    transition: background-size 0.2s linear;
+    font-family: "Play"
+}
+
+button:hover {
+    color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+}
+
+.right-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;;
+}
+
+.hero-section > h1 {
+    font-size: 70px;
+    width: 600px;
+    color: var(--green);
+    font-family: "Play";
+    text-align: center;
+}
+
+.cards {
+    margin-top: 20vh;
+}
+
+.chapter-card > h2 {
+    color: var(--green);
+    font-family: "Play";
+    text-align: center;
+}
+
+.chapter-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(300px, 30%, 400px);
+    border-radius: 25px;
+    height: 320px;
+    border: 3px solid var(--green);
+    padding-top: 30px;
+    justify-content: space-between;
+    transition: transform 0.1s linear;
+}
+
+.chapter-card:hover {
+    transform: scale(1.1)
+}
+
+.chapter-card > img {
+    width: 80%;
+    border-radius: 25px;
+    border: 3px solid var(--green);
+}
+
+.card-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    align-self: self-end;
+    margin-right: 30px;
+}
+
+.card-icons > img {
+    height: 40px;
+}
+
+.card-icons > h1, .card-icons > img {
+    transition: transform 0.1s linear, opacity 0.1s linear;
+    user-select: none;
+}
+
+.card-icons > h1:hover, .card-icons > img:hover {
+    transform: scale(1.3);
+    opacity: 0.5;
+}
+
+.card-icons > .left-icon {
+    height: 25px;
+}
+
+.qmark {
+    color: white;
+    font-size: 28px;
+    margin: 0px;
+}
+
+.text-book-section > h1 {
+    color: var(--green)
+}
+
+.pdf-container > iframe {
+    width: 700px;
+    height: 900px;
+}
+
+.pdf-top-cover {
+    height: 65px;
+    background-color: rgb(0, 0, 0);
+    position: absolute;
+    z-index: 0;
+}
+
+.pdf-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.pdf0 {
+    margin-top: 15vh;
+}
+
+label {
+    color: var(--green);
+    font-family: "Play";
+    font-size: 24px;
+}
+
+.custom-page-selector > input {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px solid black;
+    border-bottom: 2px solid var(--green);
+    width: 30px;
+    color: var(--green);
+    font-size: 20px;
+}
+
+.custom-page-selector {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;;
+}
+
+.custom-page-selector > input:focus {
+    outline: none;
+}
+
+.screen-cover {
+    display: none;
+}
+
+#gray-out {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.648);
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-section-multiplechoice > h2 {
+    color:rgb(35, 255, 76);
+    font-family: "Play";
+}
+
+.top-section-multiplechoice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.multichoice-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.multiple-choice-question {
+    width: clamp(300px, 50%, 600px);
+    border-radius: 30px;
+    border: 3px solid rgb(35, 255, 76);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: fixed;
+    align-self: center;
+    justify-self: center;
+    background-color: black;
+}
+
+.multiple-choice-question > h2 {
+    color: rgb(35, 255, 76);
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0px;
+    margin-bottom: -30px;
+    align-self: self-end;
+    transition: transform 0.1s linear;
+    user-select: none;
+}
+
+.multiple-choice-question > h2:hover {
+    transform: scale(1.2)
+}
+
+input[type="radio"]:checked {
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+}
+
+
