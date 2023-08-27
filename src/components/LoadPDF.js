@@ -10,7 +10,7 @@ export const PDF = (props) => {
                 let cover = document.querySelector(".pdf-top-cover");
                 let pdf = document.querySelector(".pdf0");
                 console.log(pdf.offsetLeft)
-                cover.style.cssText = "top: " + pdf.offsetTop + "px; left: " + pdf.offsetLeft + "px; width: " + (pdf.clientWidth + 3) +  "px;"
+                cover.style.cssText = "top: " + (pdf.offsetTop-5) + "px; left: " + (pdf.offsetLeft-5) + "px; width: " + (pdf.clientWidth + 30) +  "px;"
             }
             catch (e) {
                 // console.log(e)
@@ -18,7 +18,7 @@ export const PDF = (props) => {
         })
         let cover = document.querySelector(".pdf-top-cover");
             let pdf = document.querySelector(".pdf0");
-            cover.style.cssText = "top: " + pdf.offsetTop + "px; left: " + pdf.offsetLeft + "px; width: " + (pdf.clientWidth + 3) +  "px;"
+            cover.style.cssText = "top: " + (pdf.offsetTop-5) + "px; left: " +(pdf.offsetLeft-5) + "px; width: " + (pdf.clientWidth + 30) +  "px;"
     }, [])
 
     return <div className={"pdf-container"}>

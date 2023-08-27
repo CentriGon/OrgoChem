@@ -61,10 +61,30 @@ export const TextbookSection = () => {
 
     const startQuiz = async () => {
 
-        let response = await fetch(("https://chem-orgo-server.onrender.com/chapter12Questions/" + (currentDocIndex+1)))
-        response = await response.json();
-
         
+        let response = null;
+        if (currentDocIndex != currentQuizRef.current) {
+            questionIndexRef.current = 0;
+            
+            try {
+
+                response = await fetch(("https://chem-orgo-server.onrender.com/chapter12Questions/" + (currentDocIndex+1)), {
+                    method: 'GET',
+                    timeout: 5000
+                })
+                response = await response.json();
+            }
+            catch(e) {
+                editError("Error fetching questions. Please try again in a moment.")
+                setTimeout(() => {
+                    editError("");
+                }, 5000)
+                return;
+            }
+        }
+        else {
+            response = quizQuestionsRef.current;
+        }
         const screenCover = document.querySelector(".screen-cover");
         screenCover.setAttribute("id", "gray-out");
 
@@ -80,7 +100,13 @@ export const TextbookSection = () => {
                 document.querySelector(".option" + (i+1)).textContent = quizQuestionsRef.current[questionIndexRef.current].answers[i];
                 correctAnswerRef.current = quizQuestionsRef.current[questionIndexRef.current].correctAnswer;
             }
+            currentQuizRef.current = currentDocIndex;
         }
+        
+    }
+
+    const editError = (message) => {
+        document.querySelector(".error-message").textContent = message
     }
 
     const closeQuiz = () => {
@@ -114,7 +140,6 @@ export const TextbookSection = () => {
     }
 
     const nextQuestion = () => {
-        console.log(quizQuestionsRef)
         if (questionIndexRef.current + 1 < quizQuestionsRef.current.length) {
             questionIndexRef.current += 1;
             changeQuestion(quizQuestionsRef.current.length, questionIndexRef.current)
@@ -197,11 +222,15 @@ export const TextbookSection = () => {
         <NavBar />
         
         <PDF SRC={currentDoc} pdfNum={currentDocIndex} nextPage={nextPage} prevPage={previousPage} startQuiz={startQuiz}/> 
+        <h4 className="error-message" style={{color: "red", fontSize: 20 + "px", maxWidth: 300 + "px", textAlign: "center"}}></h4>
         <div className="custom-page-selector">
             <label htmlFor="jump-to-page">Jump to page: </label>
-            <input type="number" id="jump-to-page"/>
+            <input type="text" id="jump-to-page" inputmode="numeric" pattern="[0-9]*" onChange={(e) => {
+                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+            }}/>
             <button onClick={() => {jumpPage()}}> Jump </button>
         </div>
+       
         
     </div>
 }

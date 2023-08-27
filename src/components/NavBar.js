@@ -9,8 +9,7 @@ export const NavBar = () => {
             <img src={require("../images/logo-removebg-preview.png")} alt="logo" onClick={() => {navigate("/")}}/>
         </div>
         <div className="right-side">
-            <button> Sign In </button>
-            <button> Sign out </button>
+            <button> Does nothing </button>
         </div>
     </div>
 }
